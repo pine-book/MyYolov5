@@ -1,0 +1,6 @@
+--2023-01-25 15:04:16--  https://adclick.g.doubleclick.net/aclk?sa=l
+adclick.g.doubleclick.net (adclick.g.doubleclick.net) をDNSに問いあわせています... 216.58.220.130
+adclick.g.doubleclick.net (adclick.g.doubleclick.net)|216.58.220.130|:443 に接続しています... 接続しました。
+HTTP による接続要求を送信しました、応答を待っています... 400 Bad Request
+2023-01-25 15:04:16 エラー 400: Bad Request。
+

@@ -384,7 +384,7 @@ class DetectMultiBackend(nn.Module):
             batch_dim = get_batch(network)
             if batch_dim.is_static:
                 batch_size = batch_dim.get_length()
-            executable_network = ie.compile_model(network, device_name="CPU")  # device_name="MYRIAD" for Intel NCS2
+            executable_network = ie.compile_model(network, device_name="MYRIAD")  # device_name="MYRIAD" for Intel NCS2
             stride, names = self._load_metadata(Path(w).with_suffix('.yaml'))  # load metadata
         elif engine:  # TensorRT
             LOGGER.info(f'Loading {w} for TensorRT inference...')
@@ -459,6 +459,12 @@ class DetectMultiBackend(nn.Module):
                     'Darwin': 'libedgetpu.1.dylib',
                     'Windows': 'edgetpu.dll'}[platform.system()]
                 interpreter = Interpreter(model_path=w, experimental_delegates=[load_delegate(delegate)])
+                print(delegate)
+
+                ###########################################################################################
+                #                           変更箇所                                                       #
+                ###########################################################################################
+                #interpreter = Interpreter(model_path=w, experimental_preserve_all_tensors=True, experimental_delegates=[load_delegate('libedgetpu.so.1')])
             else:  # TFLite
                 LOGGER.info(f'Loading {w} for TensorFlow Lite inference...')
                 interpreter = Interpreter(model_path=w)  # load TFLite model

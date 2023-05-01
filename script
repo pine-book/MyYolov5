@@ -1,0 +1,8 @@
+#!/bin/bash
+echo "This is bash script"
+
+for i in `seq 0 10`
+do
+  echo $i
+  python3 yolov5_rasp.py
+done
